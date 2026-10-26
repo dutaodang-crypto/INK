@@ -1,0 +1,17 @@
+{
+  "passed": [
+    "Browser default charge 2+",
+    "Na example base peak and components",
+    "Candidate row zoom",
+    "CSV export row count agrees with canonical result",
+    "JSON export agrees with canonical result",
+    "SVG export valid XML",
+    "Composition filter",
+    "File upload",
+    "Truncated-range and low-coverage warnings",
+    "760px responsive layout without horizontal overflow",
+    "Cs sample selection and base peak",
+    "Report images loaded and desktop layout without overflow",
+    "All final experimental metadata uses His 5 mmol/L"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.2",
+  "scipy": "1.18.0",
+  "metadata_authority": "Final user clarification: all histidine 5 mmol/L; metal concentrations follow filenames; all alkali salts chlorides; acquisition parameters identical.",
+  "files": [
+    {
+      "file": "HisCs5mM-cluster-calibration-1.txt",
+      "sha256": "0aeb02d5175482052084d2d9d014c2d619cad684471b24757c4f6bcd922aba4b",
+      "settings": {
+        "metal": "Cs",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "HisK5mM-cluster-calibration-1.txt",
+      "sha256": "fb3afd57ea00a86fc78fa445428b19dc4a7015cde606f1e05b17003b3f5120a0",
+      "settings": {
+        "metal": "K",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "HisLi5mM-cluster-calibration-1.txt",
+      "sha256": "fa6cc1bcb9b12aa4b9c4131802b896228257ce1accb9d5ca31a62b728cf29542",
+      "settings": {
+        "metal": "Li",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "HisNa1.5mM-cluster-calibration-1.txt",
+      "sha256": "389dc70c5249925fd74dbf2e6e714b7b4ae04ea2b0392dd755da036185e1c10c",
+      "settings": {
+        "metal": "Na",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "HisNa5mM-cluster-calibration-1.txt",
+      "sha256": "0c0f487c236353c6f40ce0cbe55b6c001a297d3862d4528b73b64fe342456b05",
+      "settings": {
+        "metal": "Na",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "HisRb5mM-cluster-calibration-1.txt",
+      "sha256": "ae4c5d8bdd9a94cb8cfcb73ce26a5e38ce7b88e8c7f88e8fc7d6445d2f92cccb",
+      "settings": {
+        "metal": "Rb",
+        "minimum_percent": 0.8,
+        "tolerance_ppm": 100,
+        "maximum_charge": 2,
+        "maximum_histidine": 12,
+        "include_chloride": true,
+        "mass_offset_ppm": 0.0
+      }
+    },
+    {
+      "file": "07A5B5841E02314E536D1738320_14DFA53F_145483.pdf",
+      "sha256": "5cd4572e801924cc358c7d6c2061b8e65b96034368878d464950248162b46764"
+    },
+    {
+      "file": "HisNa(5mM)-ESI-1.pdf",
+      "sha256": "c0e9bb0961458dd5e416c77cd40c8a8d27c6942231525477007f93fe1837a4ab"
+    },
+    {
+      "file": "HisNa-ESI-1.pdf",
+      "sha256": "5cb077a52a861025b49a2cbfb0af198f310e6d3f723e50a603fd7128727a27d6"
+    }
+  ]
+}

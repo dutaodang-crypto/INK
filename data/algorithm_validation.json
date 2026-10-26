@@ -1,0 +1,13 @@
+{
+  "passed": [
+    "Histidine exact mass",
+    "Duplicate coordinates and non-finite data rejected",
+    "Exactly isobaric 1+ and 2+ envelopes separated; both amplitudes within 5%",
+    "Cs/Cl isotope envelope recovered at -60 ppm; raw error preserved",
+    "Negative-side 6Li and heavy Rb/Cl mode handled"
+  ],
+  "sodium_isobar_amplitudes": {
+    "[3His+4Na-3H]1+": 999.7034597551147,
+    "[6His+8Na-6H]2+": 648.6534206452606
+  }
+}

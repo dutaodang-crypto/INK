@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HisMS · 质谱解卷积</title><link rel="icon" href="data:,">
+<style>
+:root{--ink:#14302c;--muted:#657772;--green:#17755b;--mint:#eaf4ee;--line:#dce5df;--paper:#f5f7f2;--orange:#c57735}*{box-sizing:border-box}body{margin:0;font-family:"Times New Roman","Microsoft YaHei","微软雅黑",serif;background:var(--paper);color:var(--ink);font-size:17px}button,input,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:9px 13px}button:hover{border-color:var(--green)}button:disabled{opacity:.5;cursor:wait}header{background:#143b32;color:white;padding:25px 34px;display:flex;justify-content:space-between;align-items:center}h1{font-size:29px;margin:0;letter-spacing:-.5px}header p{margin:6px 0 0;color:#b9d0c6;font-size:15px}.badge{padding:7px 13px;border:1px solid #507165;border-radius:30px;color:#d6e9dc;font-size:14px}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:24px;padding:24px;max-width:1600px;margin:auto}aside{background:white;border:1px solid var(--line);border-radius:12px;padding:22px;align-self:start;position:sticky;top:18px}h2{font-size:20px;margin:0 0 16px}h3{font-size:15px;margin:24px 0 12px;color:var(--muted)}label{display:block;margin:14px 0 6px;font-size:14px;font-weight:600;color:#4e625c}select,input[type=number],input[type=search]{border:1px solid #d1ddd5;border-radius:7px;padding:9px;width:100%;background:white;color:var(--ink);min-width:0}input[type=file]{width:100%;font-size:14px}input[type=checkbox]{accent-color:var(--green)}.row{display:flex;gap:10px;align-items:center}.row>*{min-width:0}.row .field{flex:1}.run{background:var(--green);border-color:var(--green);color:white;width:100%;margin-top:21px;font-weight:600;padding:12px}.helper{font-size:14px;line-height:1.7;color:var(--muted)}.check{display:flex;align-items:center;gap:7px;line-height:1.6}.content{min-width:0}.title-row{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:3px 0 16px}.eyebrow{color:var(--green);letter-spacing:1.4px;font-size:13px;font-weight:700;margin-bottom:7px}.title-row h2{font-size:25px;margin:0}.filename{font-size:14px;margin-top:8px;color:var(--muted);overflow-wrap:anywhere}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{background:white;border:1px solid var(--line);border-radius:10px;padding:17px}.stat small{display:block;color:var(--muted);font-size:13px;margin-bottom:8px}.stat b{font-size:25px;font-weight:600}.stat span{font-size:13px;color:var(--muted);margin-left:3px}.notice{background:#fff6e7;border:1px solid #efdbb7;padding:13px 16px;border-radius:8px;color:#775b2b;font-size:14px;line-height:1.8;margin-bottom:18px;white-space:pre-line}.hidden{display:none}.chart-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.chart-head h2{margin:0;font-size:18px}.legend{display:flex;gap:15px;font-size:13px;color:var(--muted)}.legend i{display:inline-block;width:15px;height:3px;margin:0 5px 3px 0;background:#9baaa3}.legend i.fit{background:var(--green)}.legend i.residual{background:var(--orange)}.zoom{display:flex;gap:7px;align-items:center;margin-top:18px;font-size:13px}.zoom input{width:90px;padding:6px}.zoom button{padding:6px 10px;font-size:13px}svg{display:block;width:100%;height:auto}#spectrum{margin-top:6px}.chart-note{font-size:13px;color:var(--muted);margin:5px 0 0}.table-wrap{max-height:430px;overflow:auto;margin-top:15px;border-top:1px solid var(--line)}table{border-collapse:collapse;width:100%;font-size:14px;white-space:nowrap}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid #e9eeea}th{background:#f3f6f2;color:#52665c;font-weight:500;position:sticky;top:0}tr:hover td{background:#f1f7f2;cursor:pointer}.formula{font-family:"Times New Roman","Microsoft YaHei","微软雅黑",serif}.tag{background:var(--mint);border-radius:4px;padding:3px 6px;color:var(--green)}.actions{display:flex;gap:7px;flex-wrap:wrap}.actions button{font-size:13px;padding:8px 10px}.empty{height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#809289}.empty strong{font-size:21px;color:#526e61;font-weight:500}.footer{font-size:13px;color:var(--muted);line-height:1.8;margin:0 3px 20px}.search{max-width:180px}details{font-size:14px;line-height:1.9;color:var(--muted)}summary{cursor:pointer;font-weight:600;color:var(--ink)}#status{font-size:14px;line-height:1.7;margin-top:12px;overflow-wrap:anywhere}.error{color:#a54236}.tooltip{position:fixed;background:#153b32;color:white;border-radius:6px;padding:8px 10px;pointer-events:none;font-size:14px;z-index:5;white-space:pre-line;box-shadow:0 3px 12px #1233}.plot-label{font:13px "Times New Roman","Microsoft YaHei","微软雅黑",serif;font-weight:700;fill:#657772}.small-note{font-size:12px;color:var(--muted)}@media(max-width:900px){header{padding:20px}.layout{grid-template-columns:1fr;padding:16px;gap:16px}aside{position:static}.stats{grid-template-columns:repeat(2,1fr)}.title-row{align-items:flex-start}.chart-head{flex-wrap:wrap}.badge{display:none}}@media print{aside,.actions,.zoom{display:none}.layout{display:block}header{background:white;color:#14302c}.card{break-inside:avoid}.table-wrap{max-height:none}}*{font-family:"Times New Roman","Microsoft YaHei","微软雅黑",serif !important;font-weight:700 !important}</style>
+</head>
+<body>
+<header><div><h1>HisMS <span style="font-weight:700;color:#a9c9b9">/</span> 质谱解卷积</h1><p>组氨酸 · 碱金属 · 正离子 ESI</p></div><div class="badge">本机处理 · 数据无需上传网络</div></header>
+<div class="layout">
+<aside>
+<div class="eyebrow">01 / 输入与模型</div><h2>开始分析</h2>
+<label for="sample">已提供的数据</label><select id="sample"><option value="">选择样品…</option></select>
+<label for="upload">或导入两列轮廓谱 TXT / CSV</label><input id="upload" type="file" accept=".txt,.csv,.tsv"><p class="helper">第一列 m/z，第二列强度；支持逗号、空格或制表符。</p>
+<div class="row"><div class="field"><label for="metal">碱金属</label><select id="metal"><option>Li</option><option selected>Na</option><option>K</option><option>Rb</option><option>Cs</option></select></div><div class="field"><label for="charge">最大电荷</label><select id="charge"><option value="1">1+</option><option value="2" selected>2+</option><option value="3">3+</option></select></div></div>
+<div class="row"><div class="field"><label for="threshold">最小峰高 / %</label><input id="threshold" type="number" value="0.8" min="0.05" max="20" step="0.1"></div><div class="field"><label for="tolerance">搜索窗口 / ppm</label><input id="tolerance" type="number" value="100" min="5" max="300" step="5"></div></div>
+<label class="check"><input id="chloride" type="checkbox" checked>纳入含氯盐簇候选</label>
+<details><summary>更多设置</summary><label for="maxhis">最多 His 单元</label><input id="maxhis" type="number" value="12" min="1" max="16"><label for="offset">已知质量偏移 / ppm</label><input id="offset" type="number" value="0" min="-500" max="500" step="1"><p>正值表示实测 m/z 高于理论值。仅在有校准依据时修改。</p></details>
+<button class="run" id="run">分析并解卷积</button><div id="status" role="status" aria-live="polite">选择一个样品后开始。</div>
+<h3>实验信息</h3><p class="helper">按用户最终确认：His 均为 5 mmol/L；金属为氯化盐；采集参数一致。金属浓度以文件名区分。</p>
+<details><summary>结果如何理解</summary><p>程序以自然同位素包络识别候选，并用非负最小二乘分离重叠电荷态。候选库包含 His、所选金属、H 与可选 Cl，允许每个 His 最多失去一个质子。</p><p>候选归属不等于结构确证。拟合份额是包络峰高和的模型比例，不能当作溶液浓度。图中的拟合与残差针对检出的峰；未显示在表中的微量模型组分仍计入拟合。</p><p>Li 采用 7Li 参考质量，稀有 6Li 位于负质量侧；Rb、K、Cl 同位素均参与拟合。未检出应有的同位素峰会惩罚拟合。</p></details>
+</aside>
+<main class="content">
+<div class="title-row"><div><div class="eyebrow">02 / 解卷积工作台</div><h2>看清重叠峰背后的组成</h2><div class="filename" id="filename">可重复分析 · 可导出全部结果</div></div><div class="actions"><button id="csv" disabled>导出组分 CSV</button><button id="json" disabled>导出完整 JSON</button><button id="svg" disabled>保存谱图 SVG</button></div></div>
+<div class="stats"><div class="stat"><small>基峰 m/z</small><b id="base">—</b></div><div class="stat"><small>数据范围 m/z</small><b id="range" style="font-size:21px">—</b></div><div class="stat"><small>报告候选 / 检出峰</small><b id="count">—</b></div><div class="stat"><small>已匹配峰高比例</small><b id="coverage">—</b><span>非置信度</span></div></div>
+<div class="notice hidden" id="warning"></div>
+<section class="card"><div class="chart-head"><h2>原始谱与重构峰</h2><div class="legend"><span><i></i>原始谱</span><span><i class="fit"></i>拟合峰</span><span><i class="residual"></i>残差</span></div></div><div class="zoom"><span>m/z</span><input id="mzmin" type="number" value="200" aria-label="最小 m/z"><span>至</span><input id="mzmax" type="number" value="1000" aria-label="最大 m/z"><button id="zoom">查看区间</button><button id="reset">全谱</button></div><div id="plot-area"><div class="empty"><strong>从一张谱图开始</strong><span>选择左侧示例，或导入自己的数据</span></div></div><p class="chart-note" id="plot-note">点击组分表的一行，可查看该候选的同位素包络区间。</p></section>
+<section class="card"><div class="chart-head"><h2>去金属 / 去电荷后的 His 聚集数</h2><span class="small-note">已报告候选的拟合峰高和，按 His 数汇总</span></div><div id="mass-area"><div class="empty" style="height:130px">等待分析结果</div></div></section>
+<section class="card"><div class="chart-head"><div><h2>组分候选</h2><p class="chart-note">表中归属均须结合谱图审查；ppm 为局部对齐前的原始误差。</p></div><input id="search" class="search" type="search" placeholder="筛选组成，例如 7His" aria-label="筛选组分"></div><div class="table-wrap"><table><thead><tr><th>候选组成</th><th>电荷</th><th>实测包络主峰</th><th>理论包络主峰</th><th>误差 ppm</th><th>拟合份额</th><th>同位素线</th></tr></thead><tbody id="components"><tr><td colspan="7">尚未分析</td></tr></tbody></table></div></section>
+<p class="footer">HisMS 1.0 · 候选模型解卷积，不等同于无先验的通用质谱反演。1.5 mM 钠文本仅覆盖 m/z 200–262.51，不能用它推断高质量区。原始数据保留，所有处理结果均可导出。</p>
+</main></div><div id="tooltip" class="tooltip hidden"></div>
+<script>
+const element = identifier => document.getElementById(identifier);
+let currentResult = null;
+let uploadedText = null;
+let uploadedName = '';
+const escapeText = value => String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+const fixed = (value, digits = 2) => Number(value).toFixed(digits);
+const download = (name, content, type) => {const link = document.createElement('a'); const url = URL.createObjectURL(new Blob([content], {type})); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);};
+fetch('/api/samples').then(response => response.json()).then(samples => {for(const name of samples){const option = document.createElement('option'); option.value = name; option.textContent = name.replace('-cluster-calibration-1.txt',''); element('sample').append(option);} element('sample').value = samples.find(name => name.includes('Na5mM')) || '';}).catch(() => {element('status').textContent = '请通过 start.bat 启动，再使用自动打开的页面。';});
+element('sample').addEventListener('change', () => {uploadedText = null; uploadedName = ''; element('upload').value = ''; const match = element('sample').value.match(/His(Li|Na|K|Rb|Cs)/); if(match) element('metal').value = match[1];});
+element('upload').addEventListener('change', async event => {const file = event.target.files[0]; if(!file) return; if(file.size > 20000000){element('status').textContent = '请选择 20 MB 以内的文件。'; event.target.value = ''; return;} uploadedText = await file.text(); uploadedName = file.name; element('sample').value = ''; const match = file.name.match(/His(Li|Na|K|Rb|Cs)/); if(match) element('metal').value = match[1]; element('status').textContent = '已读取 ' + file.name;});
+element('run').addEventListener('click', async () => {
+ const button = element('run'); button.disabled = true; element('status').className = ''; element('status').textContent = '正在识别同位素包络并分离重叠组分…';
+ try{
+  if(!uploadedText && !element('sample').value) throw new Error('请先选择示例或导入数据。');
+  const settings = {metal:element('metal').value, minimum_percent:Number(element('threshold').value), tolerance_ppm:Number(element('tolerance').value), maximum_charge:Number(element('charge').value), maximum_histidine:Number(element('maxhis').value), mass_offset_ppm:Number(element('offset').value), include_chloride:element('chloride').checked};
+  const payload = uploadedText ? {text:uploadedText, filename:uploadedName, settings} : {sample:element('sample').value, settings};
+  const response = await fetch('/api/analyze', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+  const result = await response.json(); if(!response.ok) throw new Error(result.error || '分析未完成');
+  currentResult = result; renderResult(); element('status').textContent = '分析完成。归属和拟合份额请结合残差审查。';
+ }catch(error){element('status').className = 'error'; element('status').textContent = error.message;}finally{button.disabled = false;}
+});
+function renderResult(){
+ const summary = currentResult.summary;
+ element('filename').textContent = currentResult.filename;
+ element('base').textContent = fixed(summary.base_peak_mz,4);
+ element('range').textContent = fixed(summary.mz_min,1) + '–' + fixed(summary.mz_max,1);
+ element('count').textContent = summary.reported_components + ' / ' + summary.detected_peaks;
+ element('coverage').textContent = fixed(summary.matched_peak_height_fraction * 100,1) + '%';
+ element('warning').textContent = currentResult.warnings.join('\n'); element('warning').classList.remove('hidden');
+ element('mzmin').value = fixed(summary.mz_min,4); element('mzmax').value = fixed(summary.mz_max,4);
+ element('plot-note').textContent = '相对 L2 残差（含缺失同位素惩罚）：' + fixed(summary.relative_l2_residual_including_missing_isotopes,3) + '。原谱显示经过保留极值的抽稀；计算使用全部原始点。';
+ for(const identifier of ['csv','json','svg']) element(identifier).disabled = false;
+ renderSpectrum(); renderMass(); renderTable();
+}
+function renderSpectrum(){
+ if(!currentResult) return;
+ const lower = Number(element('mzmin').value), upper = Number(element('mzmax').value);
+ if(!Number.isFinite(lower) || !Number.isFinite(upper) || upper <= lower){element('status').textContent = '查看区间的上限须大于下限。'; return;}
+ const profile = currentResult.profile.filter(point => point[0] >= lower && point[0] <= upper);
+ const peaks = currentResult.peaks.filter(peak => peak.mz >= lower && peak.mz <= upper);
+ const maximum = Math.max(1,...profile.map(point => point[1]),...peaks.map(peak => peak.fitted_height));
+ const width=1000, height=340, left=60, right=975, top=20, base=239, residualBase=282;
+ const xposition = mass => left + (mass-lower)/(upper-lower)*(right-left);
+ const yposition = intensity => base - intensity/maximum*(base-top);
+ let markup = `<svg id="spectrum" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="原始质谱、拟合峰与残差">`;
+ for(let tick=0;tick<=4;tick++){const value=tick*25;const vertical=yposition(maximum*value/100);markup+=`<line x1="${left}" x2="${right}" y1="${vertical}" y2="${vertical}" stroke="#edf1ed"/><text x="48" y="${vertical+4}" text-anchor="end" class="plot-label">${value}</text>`;}
+ for(let tick=0;tick<=8;tick++){const mass=lower+(upper-lower)*tick/8;const horizontal=xposition(mass);markup+=`<text x="${horizontal}" y="319" text-anchor="middle" class="plot-label">${fixed(mass,upper-lower<20?2:0)}</text>`;}
+ markup += `<text x="60" y="12" class="plot-label">区间最大峰 = 100%</text><line x1="${left}" x2="${right}" y1="${residualBase}" y2="${residualBase}" stroke="#dce5df"/><text x="12" y="286" class="plot-label">残差</text><text x="970" y="338" text-anchor="end" class="plot-label">m/z</text>`;
+ if(profile.length) markup += '<path d="' + profile.map((point,index)=>(index?'L':'M')+fixed(xposition(point[0]),2)+','+fixed(yposition(point[1]),2)).join(' ') + '" fill="none" stroke="#9baaa3" stroke-width="1"/>';
+ for(const peak of peaks){const horizontal=xposition(peak.mz);markup+=`<line x1="${horizontal}" x2="${horizontal}" y1="${base}" y2="${yposition(peak.fitted_height)}" stroke="#17755b" stroke-width="1.4"/><line x1="${horizontal}" x2="${horizontal}" y1="${residualBase}" y2="${residualBase-peak.residual_height/maximum*38}" stroke="#c57735"/>`;}
+ markup+='</svg>'; element('plot-area').innerHTML=markup;
+ const graphic=element('spectrum');
+ graphic.addEventListener('mousemove', event=>{const bounds=graphic.getBoundingClientRect();const local=(event.clientX-bounds.left)/bounds.width*width;const mass=lower+(local-left)/(right-left)*(upper-lower);const closest=peaks.reduce((best,peak)=>!best||Math.abs(peak.mz-mass)<Math.abs(best.mz-mass)?peak:best,null);if(!closest||local<left||local>right)return;const tooltip=element('tooltip');tooltip.textContent=`m/z ${fixed(closest.mz,4)}\n原始峰高 ${fixed(closest.raw_height,1)}\n拟合峰高 ${fixed(closest.fitted_height,1)}`;tooltip.style.left=Math.min(event.clientX+14,window.innerWidth-205)+'px';tooltip.style.top=event.clientY+12+'px';tooltip.classList.remove('hidden');});
+ graphic.addEventListener('mouseleave',()=>element('tooltip').classList.add('hidden'));
+}
+function renderMass(){
+ const groups={};for(const component of currentResult.components)groups[component.histidine]=(groups[component.histidine]||0)+component.fitted_height_sum;
+ const counts=Object.keys(groups).map(Number).sort((first,second)=>first-second); const total=Object.values(groups).reduce((sum,value)=>sum+value,0)||1;
+ if(!counts.length){element('mass-area').innerHTML='<div class="empty" style="height:130px">无可报告组分</div>';return;}
+ const maximum=Math.max(...Object.values(groups));const stride=900/counts.length;let markup='<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="去加合物后 His 聚集数分布">';
+ counts.forEach((count,index)=>{const horizontal=65+index*stride;const barHeight=groups[count]/maximum*115;markup+=`<rect x="${horizontal}" y="${145-barHeight}" width="${Math.min(48,stride-12)}" height="${barHeight}" rx="3" fill="${count===0?'#c6a47d':'#42856c'}"/><text x="${horizontal}" y="${135-barHeight}" class="plot-label">${fixed(groups[count]/total*100,1)}%</text><text x="${horizontal}" y="166" class="plot-label">${count===0?'纯盐':count+' His'}</text><text x="${horizontal}" y="185" class="plot-label">${fixed(count*155.06947654,1)}</text>`;});
+ element('mass-area').innerHTML=markup+'</svg>';
+}
+function renderTable(){
+ if(!currentResult)return;const query=element('search').value.toLowerCase();const rows=currentResult.components.filter(component=>component.label.toLowerCase().includes(query));
+ element('components').innerHTML=rows.map(component=>`<tr data-mass="${component.mode_observed_mz}"><td class="formula">${escapeText(component.label)}</td><td><span class="tag">${component.charge}+</span></td><td>${fixed(component.mode_observed_mz,4)}</td><td>${fixed(component.mode_theoretical_mz,4)}</td><td>${fixed(component.raw_error_ppm,1)}</td><td>${fixed(component.fitted_share_percent,2)}%</td><td>${component.matched_isotopes}</td></tr>`).join('')||'<tr><td colspan="7">没有符合条件的候选。</td></tr>';
+ for(const row of element('components').querySelectorAll('tr[data-mass]'))row.addEventListener('click',()=>{const mass=Number(row.dataset.mass);element('mzmin').value=fixed(mass-2,3);element('mzmax').value=fixed(mass+5,3);renderSpectrum();element('plot-area').scrollIntoView({behavior:'smooth',block:'center'});});
+}
+element('search').addEventListener('input',renderTable);element('zoom').addEventListener('click',renderSpectrum);element('reset').addEventListener('click',()=>{if(!currentResult)return;element('mzmin').value=currentResult.summary.mz_min;element('mzmax').value=currentResult.summary.mz_max;renderSpectrum();});
+element('json').addEventListener('click',()=>download('HisMS_result.json',JSON.stringify(currentResult,null,2),'application/json'));
+element('csv').addEventListener('click',()=>{const columns=['label','histidine','metals','chloride','hydrogen','charge','reference_mz','mode_theoretical_mz','mode_observed_mz','raw_error_ppm','local_alignment_da','envelope_cosine','matched_isotopes','fitted_height_sum','fitted_share_percent','neutral_histidine_mass','ion_mass','status'];const quote=value=>'"'+String(value??'').replace(/"/g,'""')+'"';const csv=[columns.join(','),...currentResult.components.map(component=>columns.map(column=>quote(component[column])).join(','))].join('\r\n');download('HisMS_components.csv','\ufeff'+csv,'text/csv;charset=utf-8');});
+element('svg').addEventListener('click',()=>{const copy=element('spectrum').cloneNode(true);const style=document.createElementNS('http://www.w3.org/2000/svg','style');style.textContent='.plot-label{font:13px "Times New Roman","Microsoft YaHei","微软雅黑",serif;font-weight:700;fill:#657772}';copy.prepend(style);download('HisMS_spectrum.svg',new XMLSerializer().serializeToString(copy),'image/svg+xml');});
+</script>
+</body>
+</html>
