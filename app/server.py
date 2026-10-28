@@ -52,17 +52,27 @@ class Handler(BaseHTTPRequestHandler):
             length = int(self.headers.get('Content-Length', 0))
             if not 0 < length <= 25_000_000:
                 raise ValueError('请选择 25 MB 以内的两列文本文件。')
-            request = json.loads(self.rfile.read(length))
+            try:
+                request = json.loads(self.rfile.read(length))
+            except json.JSONDecodeError as error:
+                raise ValueError('请求体不是合法 JSON。') from error
+            if not isinstance(request, dict):
+                raise ValueError('请求体必须是 JSON 对象。')
             sample = request.get('sample')
             if sample:
-                if sample not in SAMPLES:
+                if not isinstance(sample, str) or sample not in SAMPLES:
                     raise ValueError('示例文件不存在。')
                 text = SAMPLES[sample].read_text(encoding='utf-8-sig')
                 filename = sample
             else:
                 text = request.get('text', '')
+                if not isinstance(text, str):
+                    raise ValueError('上传内容必须是两列文本。')
                 filename = str(request.get('filename', 'spectrum.txt'))
-            result = analyze(text, filename=filename, **request.get('settings', {}))
+            settings = request.get('settings', {})
+            if not isinstance(settings, dict):
+                raise ValueError('settings 必须是 JSON 对象。')
+            result = analyze(text, filename=filename, **settings)
             self.send_json(result)
         except (ValueError, TypeError, KeyError) as error:
             self.send_json({'error': str(error)}, 400)

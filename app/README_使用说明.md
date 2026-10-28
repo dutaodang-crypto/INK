@@ -76,4 +76,4 @@ python deconvolution.py samples/HisCs5mM-cluster-calibration-1.txt --metal Cs --
 python verify.py
 ```
 
-脚本用当前代码重跑六份附带样品，并与 `../analysis_data/summary.json` 对照基峰 m/z（±0.01 Th）、报告组分数和已匹配峰高比例（±0.002）。全部一致时退出码为 0。找不到参考文件时只打印本次结果、不做判定。
+脚本用当前代码重跑六份附带样品，并自动查找参考 `../data/summary.json`（仓库布局）或 `../analysis_data/summary.json`（打包布局），对照基峰 m/z（±0.01 Th）、报告组分数和已匹配峰高比例（±0.002）。也可以用 `--summary` 指定其他参考文件。退出码：0 全部一致；1 存在不一致或参考中缺少样品记录；2 找不到或无法读取参考文件。

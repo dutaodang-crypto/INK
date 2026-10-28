@@ -26,7 +26,7 @@ ISOTOPES = {
     'Li': ((0, 0.0, 0.9241), (-1, -1.0008805492, 0.0759)),
     'Na': ((0, 0.0, 1.0),),
     'K': ((0, 0.0, 0.932581), (1, 1.0002916796, 0.000117), (2, 1.9981187715, 0.067302)),
-    'Rb': ((0, 0.0, 0.7217), (2, 1.9974108031, 0.2783)),
+    'Rb': ((0, 0.0, 0.7217), (2, 1.9973907891, 0.2783)),
     'Cs': ((0, 0.0, 1.0),),
 }
 
@@ -304,7 +304,9 @@ def main():
     result = analyze(args.input.read_text(encoding='utf-8-sig'), metal=args.metal, minimum_percent=args.min_percent, tolerance_ppm=args.tolerance_ppm, maximum_charge=args.max_charge, include_chloride=not args.no_chloride, mass_offset_ppm=args.mass_offset_ppm, filename=args.input.name)
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / 'result.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
-    (args.output / 'components.csv').write_text(components_csv(result), encoding='utf-8-sig')
+    # newline='' 防止 Windows 文本模式把 components_csv 已有的 CRLF 再翻译成 CRCRLF。
+    with (args.output / 'components.csv').open('w', encoding='utf-8-sig', newline='') as handle:
+        handle.write(components_csv(result))
     print(json.dumps(result['summary'], ensure_ascii=False, indent=2))
 
 
