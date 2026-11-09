@@ -42,18 +42,18 @@
     "relative_l2_residual_including_missing_isotopes": 0.26532314069425833
   },
   "HisNa1.5mM": {
-    "point_count": 67050,
-    "mz_min": 200.0001,
-    "mz_max": 262.5101,
-    "base_peak_mz": 255.089,
-    "base_peak_height": 392.7628,
-    "noise_estimate": 8.062711938680273,
-    "detection_threshold": 40.313559693401366,
-    "detected_peaks": 2734,
-    "candidate_count": 10,
-    "reported_components": 9,
-    "matched_peak_height_fraction": 0.007262849835423076,
-    "relative_l2_residual_including_missing_isotopes": 0.9958323492230587
+    "point_count": 450514,
+    "mz_min": 199.9999,
+    "mz_max": 1000.0071,
+    "base_peak_mz": 621.282,
+    "base_peak_height": 8918.416,
+    "noise_estimate": 4.316404517752163,
+    "detection_threshold": 71.16933039999999,
+    "detected_peaks": 2300,
+    "candidate_count": 132,
+    "reported_components": 121,
+    "matched_peak_height_fraction": 0.35364681605599546,
+    "relative_l2_residual_including_missing_isotopes": 0.31131333021745244
   },
   "HisNa5mM": {
     "point_count": 56315,

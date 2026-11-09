@@ -28,7 +28,7 @@
 <section class="card"><div class="chart-head"><h2>原始谱与重构峰</h2><div class="legend"><span><i></i>原始谱</span><span><i class="fit"></i>拟合峰</span><span><i class="residual"></i>残差</span></div></div><div class="zoom"><span>m/z</span><input id="mzmin" type="number" value="200" aria-label="最小 m/z"><span>至</span><input id="mzmax" type="number" value="1000" aria-label="最大 m/z"><button id="zoom">查看区间</button><button id="reset">全谱</button></div><div id="plot-area"><div class="empty"><strong>从一张谱图开始</strong><span>选择左侧示例，或导入自己的数据</span></div></div><p class="chart-note" id="plot-note">点击组分表的一行，可查看该候选的同位素包络区间。</p></section>
 <section class="card"><div class="chart-head"><h2>去金属 / 去电荷后的 His 聚集数</h2><span class="small-note">已报告候选的拟合峰高和，按 His 数汇总</span></div><div id="mass-area"><div class="empty" style="height:130px">等待分析结果</div></div></section>
 <section class="card"><div class="chart-head"><div><h2>组分候选</h2><p class="chart-note">表中归属均须结合谱图审查；ppm 为局部对齐前的原始误差。</p></div><input id="search" class="search" type="search" placeholder="筛选组成，例如 7His" aria-label="筛选组分"></div><div class="table-wrap"><table><thead><tr><th>候选组成</th><th>电荷</th><th>实测包络主峰</th><th>理论包络主峰</th><th>误差 ppm</th><th>拟合份额</th><th>同位素线</th></tr></thead><tbody id="components"><tr><td colspan="7">尚未分析</td></tr></tbody></table></div></section>
-<p class="footer">HisMS 1.0 · 候选模型解卷积，不等同于无先验的通用质谱反演。1.5 mM 钠文本仅覆盖 m/z 200–262.51，不能用它推断高质量区。原始数据保留，所有处理结果均可导出。</p>
+<p class="footer">HisMS 1.0 · 候选模型解卷积，不等同于无先验的通用质谱反演。六份附带样品均为 200–1000 全谱；两组钠来自不同采集日期，不能视为同一次扫描的重复。原始数据保留，所有处理结果均可导出。</p>
 </main></div><div id="tooltip" class="tooltip hidden"></div>
 <script>
 const element = identifier => document.getElementById(identifier);
